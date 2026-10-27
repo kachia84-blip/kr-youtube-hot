@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <title>한국 유튜브 인기 영상</title>
+  <link rel="stylesheet" href="css/style.css">
+  <script defer src="js/config.js"></script>
+  <script defer src="js/util.js"></script>
+  <script defer src="js/key.js"></script>
+  <script defer src="js/api.js"></script>
+  <script defer src="js/store.js"></script>
+  <script defer src="js/data.js"></script>
+  <script defer src="js/modes.js"></script>
+  <script defer src="js/ui.js"></script>
+  <script defer src="js/app.js"></script>
+</head>
+<body>
+  <header>
+    <div class="heading">
+      <h1>🇰🇷 한국 유튜브 인기 영상</h1>
+      <span id="quota" aria-live="polite"></span>
+    </div>
+    <nav id="tabs" class="row tabs" aria-label="영상 정렬 방식"></nav>
+    <div class="row filters">
+      <label class="field">기간
+        <select id="period">
+          <option value="1">최근 24시간</option>
+          <option value="3">최근 3일</option>
+          <option value="7" selected>최근 7일</option>
+          <option value="30">최근 30일</option>
+        </select>
+      </label>
+      <label class="field">카테고리 <select id="cat"></select></label>
+      <label class="field">유형
+        <select id="type">
+          <option value="any">전체 (쇼츠+롱폼)</option>
+          <option value="long">롱폼만 (3분 초과)</option>
+          <option value="short">쇼츠만 (3분 이하)</option>
+        </select>
+      </label>
+      <label class="field keyword">키워드
+        <input id="kw" type="text" placeholder="비우면 전체" autocomplete="off">
+      </label>
+      <button id="go" class="go" type="button">불러오기</button>
+    </div>
+    <div class="row tools">
+      <label><input id="ko" type="checkbox" checked> 한글 제목/채널만</label>
+      <label><input id="hideSeen" type="checkbox"> 본 영상 숨기기</label>
+      <button id="viewToggle" type="button" aria-pressed="false">격자로 보기</button>
+      <button id="blockBtn" type="button" aria-expanded="false" aria-controls="blockPanel">차단 관리</button>
+    </div>
+    <p id="desc"></p>
+  </header>
+  <main>
+    <section id="blockPanel" aria-label="차단 관리" hidden></section>
+    <div id="msg" role="status" aria-live="polite">[불러오기]를 누르세요. 저장된 결과가 없으면 자동으로 요청하지 않아요.</div>
+    <div id="list" aria-label="검색 결과" aria-busy="false"></div>
+  </main>
+</body>
+</html>
